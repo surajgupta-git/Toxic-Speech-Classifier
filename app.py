@@ -4,8 +4,6 @@ import pandas as pd
 
 from sklearn.feature_extraction.text import CountVectorizer
 
-import joblib
-
 app = Flask(__name__)
 
 @app.route('/')
