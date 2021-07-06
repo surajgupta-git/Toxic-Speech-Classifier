@@ -21,8 +21,9 @@ Here simple CSS & HTML is used with POST method to send the data.
 ## Main Libraries Used
 * [Pandas](https://pandas.pydata.org/pandas-docs/version/0.22/)
 * [Matplotlib.pyplot](https://matplotlib.org/3.1.0/api/_as_gen/matplotlib.pyplot.plot.html)
-* [NLTK](https://www.nltk.org/)
+* [NLTK - Natural Language Toolkit](https://www.nltk.org/)
 * [Pickle](https://docs.python.org/3/library/pickle.html)
+* [re - python regex libary](https://docs.python.org/3/library/re.html)
 * [SciKit-learn](https://scikit-learn.org/stable/)
 
 
