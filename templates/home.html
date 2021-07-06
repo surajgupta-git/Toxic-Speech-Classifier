@@ -12,7 +12,7 @@
 	</div>
 	</header>
 	<div class="ml-container">
-		<form action="{{ url_for('predict')}}" method="POST">
+		<form action="http://127.0.0.1:5000/predict" method="POST">
 		<p>Enter/Paste Your Speech Here</p>
 		<textarea name="message" rows="25" cols="140"></textarea>
 		<br/>

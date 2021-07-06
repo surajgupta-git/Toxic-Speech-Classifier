@@ -4,7 +4,7 @@ import pandas as pd
 
 from sklearn.feature_extraction.text import CountVectorizer
 
-from sklearn.externals import joblib
+import joblib
 
 app = Flask(__name__)
 
@@ -28,6 +28,9 @@ def predict():
 
     import re
     import nltk
+    nltk.download('punkt')
+    nltk.download('stopwords')
+    
     from nltk.corpus import stopwords
     from nltk.stem.porter import PorterStemmer
 
@@ -42,6 +45,7 @@ def predict():
         review3 = re.sub('[^a-zA-Z]', ' ', tokenize[i])
         review3 = review3.lower()
         review3 = review3.split()
+
         review3 = [ps.stem(word) for word in review3 if not word in set(stopwords.words('english'))]
         review3 = ' '.join(review3)
         corpus3.append(review3)
