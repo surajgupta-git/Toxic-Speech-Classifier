@@ -10,7 +10,7 @@ Here simple CSS & HTML is used with POST method to send the data.
 
 ### Run [home.html](https://github.com/anik8gupta/Toxic_Speech_Classification/blob/master/templates/home.html) to launch the front-end website
 
-### For Back-End [app.py](https://github.com/anik8gupta/Toxic_Speech_Classification/blob/master/app.py), I use FLASK framework of Python.
+### For Back-End [app.py](https://github.com/anik8gupta/Toxic_Speech_Classification/blob/master/app.py), I used FLASK framework of Python.
 
 ## Requirement:
 1. pip3 install scikit-learn==0.22
