@@ -1,8 +1,10 @@
 # Import Libraries
-from flask import Flask,render_template,url_for,request
+from flask import Flask,render_template,request
 import pandas as pd 
-
+import pickle as p
 from sklearn.feature_extraction.text import CountVectorizer
+import re #regex library
+import nltk
 
 app = Flask(__name__)
 
@@ -10,9 +12,9 @@ app = Flask(__name__)
 def home():
 	return render_template('home.html')
 
+
 @app.route('/predict',methods=['POST'])
 def predict():
-    import pickle as p
     # un-serializing model
     clf1 = p.load(open('speech_classification1.pkl', 'rb'))
     clf2 = p.load(open('speech_classification2.pkl', 'rb'))
@@ -24,8 +26,6 @@ def predict():
     message = request.form['message']
     data = message
 
-    import re
-    import nltk
     nltk.download('punkt')
     nltk.download('stopwords')
     
@@ -38,12 +38,10 @@ def predict():
     tokenize=sent_tokenize(data)
 
     corpus3=[]
-
     for i in range(0, len(tokenize)):
         review3 = re.sub('[^a-zA-Z]', ' ', tokenize[i])
         review3 = review3.lower()
         review3 = review3.split()
-
         review3 = [ps.stem(word) for word in review3 if not word in set(stopwords.words('english'))]
         review3 = ' '.join(review3)
         corpus3.append(review3)
@@ -89,7 +87,7 @@ def predict():
     #creating a normal column#
     a=[]
     for row in submission['total']:
-        if row==0:
+        if row==0: #if each row in total is 0, it indicates, other toc categories are 0, so the speech is normal
             a.append(1)
         else:
             a.append(0)
@@ -119,9 +117,9 @@ def predict():
                            obscene=(total[2]/total.sum())*100,
                            threat=(total[3]/total.sum())*100,
                            insult=(total[4]/total.sum())*100,
-                           identity_hate=(total[5]/total.sum())*100,plot_url=plot_data)
-
-
+                           identity_hate=(total[5]/total.sum())*100,
+                           plot_url=plot_data)
 
 if __name__ == '__main__':
 	app.run(debug=True)
+
